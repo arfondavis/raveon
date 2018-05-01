@@ -2,7 +2,7 @@
 	require('../settings/db.php');
 	include("auth.php");
 
-  $sql = "SELECT * FROM pod_list";
+  $sql = "SELECT * FROM pod_list ORDER BY id DESC";
   if(!$result = $db->query($sql)){
       die('There was an error running the query [' . $db->error . ']');
   }

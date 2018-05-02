@@ -69,7 +69,6 @@
             <a href="<?php echo $row['mixcloud_url'];?>" target="_blank" title="Mixcloud" class="text-dark"><i class='fab fa-mixcloud ml-3 mr-1'></i>Mixcloud</a>
             <?php }?>
             <a href='#' data-toggle='modal' data-target='#tracksModal' class="text-dark"><i class='fa fa-list ml-3 mr-1'></i>Track Listings</a>
-            <a href="edit.php?pe=<?php echo $row['id']?>" title="Edit Episode" class="text-dark"><i class="far fa-edit ml-3 mr-1"></i>Edit Episode</a>
           </small>
         </p>
       </div>

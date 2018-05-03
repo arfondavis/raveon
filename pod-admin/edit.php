@@ -145,13 +145,13 @@
             while($trackrow = $track_result->fetch_assoc()){
           ?>
           <div class="col-md-6">
-            <div class="form-label-group">
-              <input type="text" id="artistInput<?php echo $i?>" class="form-control form-control-lg" name="artistInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_artist']?>">
+            <div class="form-label-group" data-row="<?php echo $trackrow['tracks_id'] ?>">
+              <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_artist'] ?>">
             </div>
           </div>
           <div class="col-md-5">
-            <div class="form-label-group">
-              <input type="text" id="trackInput<?php echo $i?>" class="form-control form-control-lg" name="trackInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_title']?>">
+            <div class="form-label-group" data-row="<?php echo $trackrow['tracks_id'] ?>">
+              <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_title']?>">
             </div>
           </div>
           <div class="col-md-1">
@@ -175,9 +175,29 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    function sendnewTxt(data){
+      $.ajax({
+        url: '',
+        type: 'put',
+        success: function success(){
+          //$("#successtxt").removeClass("hidden").effect("slide", {"duration":"fast"}).delay(6000).effect("puff", {"duration":"slow"});
+        },
+        error: function error(a,b,c,d){
+          /*
+          $("#warningtxt").removeClass("hidden").effect("slide", {"duration":"fast"});
+          $("#successtxt").removeClass("hidden").effect("puff", {"duration":"slow"});
+          */
+        },
+        data: data
+          });
+    }
+  });
+</script>
 <?php $db->close(); ?>
 </body>
 </html>

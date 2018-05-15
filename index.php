@@ -31,11 +31,11 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto d-none d-sm-block d-md-none">
       <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" target="_blank">iTunes</a></li>
-      <li class="nav-item"><a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a></li>
-      <li class="nav-item"><a class="nav-link" href="https://www.mixcloud.com/raveon/uploads/" target="_blank">Mixcloud</a></li>
-      <li class="nav-item"><a class="nav-link" href="https://soundcloud.com/rave1" target="_blank">Soundcloud</a></li>
-      <li class="nav-item"><a class="nav-link" href="https://fb.com/djraveon28" target="_blank">Facebook</a></li>
+      <li class="nav-item"><a class="nav-link" href="https://pcr.apple.com/id1384044703" target="_blank">iTunes</a></li><?php /*
+      <li class="nav-item"><a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a></li> */?>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a></li>
     </ul>
   </div>
 </nav>
@@ -43,16 +43,16 @@
 <div class="nav-scroller bg-white box-shadow d-none d-md-block">
   <nav class="nav nav-underline">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a>
-    <a class="nav-link" href="#" target="_blank">iTunes</a>
-    <a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a>
-    <a class="nav-link" href="https://www.mixcloud.com/raveon/uploads/" target="_blank">Mixcloud</a>
-    <a class="nav-link" href="https://soundcloud.com/rave1" target="_blank">Soundcloud</a>
-    <a class="nav-link" href="https://fb.com/djraveon28" target="_blank">Facebook</a>
+    <a class="nav-link" href="https://pcr.apple.com/id1384044703" target="_blank">iTunes</a><?php /*
+    <a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a> */?>
+    <a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a>
+    <a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a>
+    <a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a>
   </nav>
 </div>
 <main role="main" class="container">
   <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="image/dj-raveon-txt-full200.png" alt="logo" title="DJ Raveon" width="48" height="48">
+    <img class="mr-3" src="image/ravon-logo-v2-plain-plain.svg" alt="logo" title="DJ Raveon" width="100">
   </div>
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-dark text-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>
@@ -65,18 +65,18 @@
         die('There was an erro running the query [' . $db->error . ']');
       }
     ?>
-    <div class='media text-muted pt-3'>
-      <img src='image/podcast-logo-itunes.jpg' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
+    <div class='media text-muted pt-3'><?php /*
+      <img src='image/podcast-logo-itunes.jpg' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'> */?>
       <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title'];?></strong> <?php echo $row['description'];?>
         <small class='d-block text-left mt-3'>
           <i class='fa fa-clock mr-1'></i><span class="text-dark"><?php echo substr($row['duration'], 0, -3);?></span>
           <i class='fa fa-calendar ml-3 mr-1'></i><span class="text-dark"><?php echo $row['date'];?></span>
           <?php if($row['mixcloud_url'] != ""){?>
           <a href="<?php echo $row['mixcloud_url'];?>" target="_blank" title="Mixcloud" class="text-dark"><i class='fab fa-mixcloud ml-3 mr-1'></i>Mixcloud</a>
-          <?php }
+          <?php } 
           if($track_result->num_rows > 0){ ?>
           <a href='#' data-toggle='modal' data-target='#tracksModal_<?php echo $i ?>' class="text-dark"><i class='fa fa-list ml-3 mr-1'></i>Track Listings</a>
-          <?php }?>
+          <?php } ?>
         </small>
       </p>
     </div>

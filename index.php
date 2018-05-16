@@ -36,6 +36,7 @@
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a></li>
     </ul>
   </div>
 </nav>
@@ -48,6 +49,7 @@
     <a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a>
     <a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a>
     <a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a>
+    <a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a>
   </nav>
 </div>
 <main role="main" class="container">

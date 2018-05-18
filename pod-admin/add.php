@@ -3,8 +3,8 @@
 	include("auth.php");
 
 if(isset($_POST["addnewep"])){
-  $ep_title = $_POST["episodeTitle"];
-  $ep_desc = $_POST["episodeDiscription"];
+  $ep_title = filter_var($_POST["episodeTitle"], FILTER_SANITIZE_STRING);
+  $ep_desc = str_replace("'", "&#39;", $_POST["episodeDiscription"]);
   $ep_date = date("Y-m-d");
   $ep_duration = $_POST["timeInput"];
   $ep_mixcloud = $_POST["mixcloudInput"];
@@ -85,7 +85,7 @@ if(isset($_POST["addnewep"])){
             </div>
           </div>
           <div class="col-12 pt-3">
-            <button class="btn btn-dark" name="addnewep" type="submit">Add Tracks</button>
+            <button class="btn btn-dark" name="addnewep" type="submit">Save</button>
           </div>
         </div>
       </form>

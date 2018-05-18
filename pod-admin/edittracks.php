@@ -7,6 +7,7 @@
       die('There was an error running the query [' . $db->error . ']');
     }
   }
+  // Removes the id row from the db
   if(isset($_POST['deltrack'])){
     $trackid = $_POST['trackID'];
     $id = $_GET['pe'];
@@ -17,6 +18,7 @@
       echo "Error: " . $query_del . "<br>" . mysqli_error($db);
     }
   }
+  // Adds a new row into the db
   if(isset($_POST['newtrack'])){
     $id = $_GET['pe'];
     $query_enq = "INSERT INTO podcasts_tracks (track_artist, track_title, podcast_id) VALUES ('', '', $id)"; 
@@ -26,6 +28,7 @@
       echo "Error: " . $query_enq . "<br>" . mysqli_error($db);
     }
   }
+  // Updates the current db values
   if(isset($_POST['editeptracks'])){
     $id = $_GET['pe'];   
   }

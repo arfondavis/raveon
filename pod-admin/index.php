@@ -49,10 +49,18 @@
     <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>
     <?php 
     while($row = $result->fetch_assoc()){
+      $pod_num = substr($row['title'], -3);
+      $pod_img_full = "http://".$_SERVER['SERVER_NAME']."/podcasts/".$pod_num."/podcast".$pod_num.".png";
     ?>
       <div class='media text-muted pt-3'>
-        <img src='../image/podcast-logo-itunes.jpg' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
-        <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title'];?></strong> <?php echo $row['description'];?>
+        <?php 
+          $file_headers = @get_headers($pod_img_full);
+          if($file_headers[0] == 'HTTP/1.1 404 Not Found') { ?>
+            <img src='http://placehold.it/80/068842/068842' alt="need a podcast image" title="Create and image for <?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
+          <?php }else{?>
+            <img src='<?php echo $pod_img_full; ?>' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
+          <?php }?>
+        <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title']?></strong> <?php echo $row['description'];?>
           <small class='d-block text-left mt-3'>
             <i class='fa fa-clock mr-1'></i><span class="text-dark"><?php echo substr($row['duration'], 0, -3);?></span>
             <i class='fa fa-calendar ml-3 mr-1'></i><span class="text-dark"><?php echo $row['date'];?></span>

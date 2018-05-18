@@ -7,34 +7,20 @@
       die('There was an error running the query [' . $db->error . ']');
     }
   }
-  if(isset($_POST['deltrack'])){
-    $trackid = $_POST['trackID'];
-    $id = $_GET['pe'];
-    $query_del = "DELETE FROM podcasts_tracks WHERE tracks_id=$trackid";
-    if ($db->query($query_del) === TRUE) {
-      header("Location:edit.php?pe=$id&tracks=del");
-    } else {
-      echo "Error: " . $query_del . "<br>" . mysqli_error($db);
-    }
-  }
-  if(isset($_POST['newtrack'])){
-    $id = $_GET['pe'];
-    $query_enq = "INSERT INTO podcasts_tracks (track_artist, track_title, podcast_id) VALUES ('', '', $id)"; 
-    if ($db->query($query_enq) === TRUE) {
-      header("Location:edit.php?pe=$id#tracks");
-    } else {
-      echo "Error: " . $query_enq . "<br>" . mysqli_error($db);
-    }
-  }
   if(isset($_POST['editep'])){
     $id = $_GET['pe'];
-    $ep_title = filter_var($_POST["episodeTitle"], FILTER_SANITIZE_STRING);;
+    if($_POST['podcastLive'] == 'on'){
+      $pod_live = '1';
+    }else{
+      $pod_live = '0';
+    }
+    $ep_title = filter_var($_POST["episodeTitle"], FILTER_SANITIZE_STRING);
     $ep_desc = str_replace("'", "&#39;", $_POST["episodeDiscription"]);
     $ep_date = $_POST["dateInput"];
     $ep_duration = $_POST["timeInput"];
     $ep_mixcloud = $_POST["mixcloudInput"];
 
-    $update_enq = "UPDATE pod_list SET title='$ep_title', description='$ep_desc', duration='$ep_duration', mixcloud_url='$ep_mixcloud', date='$ep_date' WHERE id=$id";
+    $update_enq = "UPDATE pod_list SET title='$ep_title', description='$ep_desc', duration='$ep_duration', mixcloud_url='$ep_mixcloud', date='$ep_date', live='$pod_live' WHERE id=$id";
 
     if ($db->query($update_enq) === TRUE) {
       header("Location:edit.php?pe=$id&updated");
@@ -96,6 +82,12 @@
     <h6 class="border-bottom border-gray pb-2 mb-0">Edit <?php echo $row['title'];?></h6>
     <div class="text-muted pt-3">
       <form action="" method="post" name="editepisode">
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="podLive" name="podcastLive"<?php if($row['live'] == '1'){?> checked="checked"<?php }?>>
+              <label class="form-check-label" for="podLive">Live?</label>
+          </div>
+        </div>
         <div class="form-label-group">
           <label for="episodeTitle">Episode Title</label>
           <input type="text" id="episodeTitle" class="form-control form-control-lg" name="episodeTitle" placeholder="" required value="<?php echo $row['title'];?>">
@@ -124,46 +116,9 @@
             </div>
           </div>
           <div class="col-12 pt-3">
-            <h5 id="tracks">Track Listings</h5>
+            <h5 id="tracks"><a href="edittracks.php?pe=<?php echo $row['id']?>">Edit Track Listings</a></h5>
           </div>
-          <?php if(isset($_GET['tracks']) && $_GET['tracks'] == 'del'){?>
-          <div class="col-12">
-            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-              <i class="far fa-thumbs-up mr-3"></i>Track <strong>removed</strong><i class="far fa-thumbs-up ml-3"></i>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          </div>
-          <?php }?>
-          <?php
-            $tracks = "SELECT * FROM podcasts_tracks WHERE podcast_id = ".$_GET['pe'];
-            if(!$track_result = $db->query($tracks)){
-              die('There was an error running the query [' . $db->error . ']');
-            }
-            $i=1;
-            while($trackrow = $track_result->fetch_assoc()){
-          ?>
-          <div class="col-md-6">
-            <div class="form-label-group" data-row="<?php echo $trackrow['tracks_id'] ?>">
-              <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_artist'] ?>">
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-label-group" data-row="<?php echo $trackrow['tracks_id'] ?>">
-              <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput<?php echo $i?>" placeholder="" value="<?php echo $trackrow['track_title']?>">
-            </div>
-          </div>
-          <div class="col-md-1">
-            <button class="btn btn-danger" name="deltrack" type="submit"><i class="fas fa-minus-circle"></i></button>
-            <input type="hidden" value="<?php echo $trackrow['tracks_id']?>" name="trackID">
-          </div>
-          <?php
-            $i++;
-            }
-          ?>
           <div class="col-12 pt-3">
-            <button class="btn btn-outline-success btn-sm float-right" name="newtrack" type="submit"><i class="fa fa-plus"></i></button>
             <button class="btn btn-dark" name="editep" type="submit">Save</button>
           </div>
         </div>

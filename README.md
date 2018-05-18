@@ -14,4 +14,4 @@ Example of iTunes xml file included
 
 :card_index: [ Stitcher ]( http://bit.ly/raveonstitcher )
 
-Correct at 18-05-2018
+:date: Correct at 18-05-2018

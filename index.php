@@ -1,7 +1,7 @@
 <?php 
   include_once('settings/db.php');
 
-  $sql = "SELECT * FROM pod_list ORDER BY id DESC";
+  $sql = "SELECT * FROM pod_list WHERE live = 1 ORDER BY id DESC";
 
   if(!$result = $db->query($sql)){
       die('There was an error running the query [' . $db->error . ']');
@@ -61,14 +61,15 @@
     <?php 
     $i = 0;
     while($row = $result->fetch_assoc()){
+      $pod_num = substr($row['title'], -3);
       //loop through all tracks for this podcast
       $tracks = "SELECT tracks.*, pod.title FROM podcasts_tracks as tracks LEFT JOIN pod_list as pod ON tracks.podcast_id = pod.id WHERE tracks.podcast_id = ".$row['id'];
       if(!$track_result = $db->query($tracks)){
         die('There was an erro running the query [' . $db->error . ']');
       }
     ?>
-    <div class='media text-muted pt-3'><?php /*
-      <img src='image/podcast-logo-itunes.jpg' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'> */?>
+    <div class='media text-muted pt-3'>
+      <a href='#' data-toggle='modal' data-target='#imgModal_<?php echo $i ?>'><img src='podcasts/<?php echo $pod_num;?>/podcast<?php echo $pod_num;?>.png' alt="podcast episode image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'></a>
       <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title'];?></strong> <?php echo $row['description'];?>
         <small class='d-block text-left mt-3'>
           <i class='fa fa-clock mr-1'></i><span class="text-dark"><?php echo substr($row['duration'], 0, -3);?></span>
@@ -117,6 +118,24 @@
               ?>
               </tbody>
             </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="imgModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="episodeIMG_<?php echo $i ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="episodeIMG_<?php echo $i ?>">Episode <?php echo $rowttitle['title']?> Image</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img src="podcasts/<?php echo $pod_num;?>/podcast<?php echo $pod_num?>.png" class="img-fluid" alt="Responsive image">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

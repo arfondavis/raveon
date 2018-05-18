@@ -85,7 +85,7 @@
     </div>
     <?php // Track listings ?>
     <div class="modal fade" id="tracksModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="tracksModalTitle_<?php echo $i ?>" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="tracksModalTitle_<?php echo $i ?>">Track Listing for <?php echo $rowttitle['title']?></h5>
@@ -108,7 +108,7 @@
               while($rowt = $track_result->fetch_assoc()){
               ?>
                 <tr>
-                  <th scope='row'><?php echo $j;?></th>
+                  <th scope='row'><?php if($j < 10){ echo "0".$j; }else{echo $j;} ?></th>
                   <td><?php echo $rowt['track_artist']?></td>
                   <td><?php echo $rowt['track_title']?></td>
                 </tr>

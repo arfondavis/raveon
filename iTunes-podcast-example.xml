@@ -30,28 +30,28 @@
     <ttl>1</ttl>
     <atom:link href="http://feeds.feedburner.com/yourfeed" rel="self" type="application/rss+xml" />
 <!--REPEAT THIS BLOCK FOR EACH EPISODE-->
-        <item>
-            <title>Episode&apos;s Title</title>
-            <link>http://www.example.com/podcast.mp3</link>
-            <comments>http://www.example.com/podcast.mp3</comments>
-            <itunes:author>Author Name</itunes:author>
-            <dc:creator>Author Name</dc:creator>
-            <description>
-                <![CDATA[
-                <p>Episode Description</p>
-                ]]>
-            </description>
-            <content:encoded>Episode Description</content:encoded>
-            <pubDate>Sat, 12 May 2018 01:55:00 GMT</pubDate>
-            <itunes:subtitle>Episode Subtitle</itunes:subtitle>
-            <itunes:summary>Episode Summary</itunes:summary>
-            <itunes:keywords>keyword 1, keyword 2, keyword 3</itunes:keywords>
-            <itunes:duration>00:58:11</itunes:duration>
-            <category>Music</category>      
-            <enclosure url="http://www.example.com/podcast.mp3" length="84273568" type="audio/mpeg3" />
-            <guid>http://www.example.com/podcast.mp3</guid>
-            <itunes:explicit>clean</itunes:explicit>
-        </item>
+    <item>
+        <title>Episode&apos;s Title</title>
+        <link>http://www.example.com/podcast.mp3</link>
+        <comments>http://www.example.com/podcast.mp3</comments>
+        <itunes:author>Author Name</itunes:author>
+        <dc:creator>Author Name</dc:creator>
+        <description>
+            <![CDATA[
+            <p>Episode Description</p>
+            ]]>
+        </description>
+        <content:encoded>Episode Description</content:encoded>
+        <pubDate>Sat, 12 May 2018 01:55:00 GMT</pubDate>
+        <itunes:subtitle>Episode Subtitle</itunes:subtitle>
+        <itunes:summary>Episode Summary</itunes:summary>
+        <itunes:keywords>keyword 1, keyword 2, keyword 3</itunes:keywords>
+        <itunes:duration>00:58:11</itunes:duration>
+        <category>Music</category>      
+        <enclosure url="http://www.example.com/podcast.mp3" length="84273568" type="audio/mpeg3" />
+        <guid>http://www.example.com/podcast.mp3</guid>
+        <itunes:explicit>clean</itunes:explicit>
+    </item>
 <!--END REPEAT--> 
-    </channel>
+</channel>
 </rss>

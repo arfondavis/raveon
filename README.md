@@ -4,14 +4,14 @@ This will be the code for Raveon's podcast page, where you can find all of DJ Ra
 
 Example of iTunes xml file included
 
-The site is currently hosted on http://bit.ly/raveonsite
+[ The site is currently hosted on ]( http://bit.ly/raveonsite )
 
-Podcast show on iTunes http://bit.ly/raveonitunes
+[ Podcast show on iTunes ]( http://bit.ly/raveonitunes )
 
-Mixcloud http://bit.ly/ravemc
+[ Mixcloud ]( http://bit.ly/ravemc )
 
-YouTube http://bit.ly/raveonyt
+[ YouTube ]( http://bit.ly/raveonyt )
 
-Stitcher http://bit.ly/raveonstitcher
+[ Stitcher ]( http://bit.ly/raveonstitcher )
 
 Correct at 18-05-2018

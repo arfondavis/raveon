@@ -106,12 +106,12 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
-            <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput<?php echo $i?>" placeholder="" value="<?php echo $row['track_artist'] ?>">
+            <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput" placeholder="" value="<?php echo $row['track_artist'] ?>">
           </div>
         </div>
         <div class="col-md-5">
           <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
-            <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput<?php echo $i?>" placeholder="" value="<?php echo $row['track_title']?>">
+            <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput" placeholder="" value="<?php echo $row['track_title']?>">
           </div>
         </div>
         <div class="col-md-1">

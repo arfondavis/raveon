@@ -2,18 +2,15 @@
 	require('../settings/db.php');
 	include("auth.php");
 
-  if(isset($_POST['artistInput'])){
-    echo "YES";
-  }else{
-    echo "NO!!!";
-  }
-/*
-  $update_enq = "UPDATE pod_list SET title='$ep_title', description='$ep_desc', duration='$ep_duration', mixcloud_url='$ep_mixcloud', date='$ep_date', live='$pod_live' WHERE id=$id";
+  $id = $_POST["trackID"]; 
+  $artist = $_POST["artistInput"]; 
+  $track = $_POST["trackInput"]; 
+  $pod_id = $_POST["trackEID"]; 
+  $update_enq = "UPDATE podcasts_tracks SET track_artist='$artist', track_title='$track', podcast_id='$pod_id' WHERE tracks_id=$id";
 
   if ($db->query($update_enq) === TRUE) {
-    header("Location:edit.php?pe=$id&updated");
+    header("Location:edittracks.php");
   } else {
     echo "Error: " . $update_enq . "<br>" . mysqli_error($db);
   }
-*/
 ?>

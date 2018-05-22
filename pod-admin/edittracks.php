@@ -93,7 +93,6 @@
     <div class="col-12 pt-3">
       <h5 id="tracks">Track Listings</h5>
     </div>
-    <form action="" method="post" id="editept" name="editepisodetracks">
       <div class="row mb-3">
         <div class="col-md-6"><h6>Artist</h6></div>
         <div class="col-md-5"><h6>Track</h6></div>
@@ -103,6 +102,8 @@
         $i=1;
         while($row = $result->fetch_assoc()){
       ?>
+    <form action="" method="post" id="editept" name="editepisodetracks">
+      
       <div class="row">
         <div class="col-md-6">
           <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
@@ -120,6 +121,7 @@
           <input type="hidden" value="<?php echo $row['podcast_id']?>" name="trackEID">
         </div>
       </div>
+      </form>
       <?php 
       $i++;
       } 
@@ -128,7 +130,6 @@
         <button class="btn btn-outline-success btn-sm float-right" name="newtrack" type="submit"><i class="fa fa-plus"></i></button>
         <button class="btn btn-dark" name="editeptracks" type="submit">Save</button>
       </div>
-    </form>
   </div>
 </main>
 <!-- Bootstrap core JavaScript
@@ -148,18 +149,13 @@
         timer = setTimeout(callback, ms);
       };
     })();
-    var form = $('#editept');
     $("input").keyup(function() {
+      var form = $(this.form);
       delay(function(){
         $.ajax({
           url: "updatetracks.php",
-          type: "POST",
-          data: {
-            id: form.trackID,
-            artist: form.artistInput,
-            track: form.trackArtist,
-            pdcast: form.trackEID
-          },
+          method: "POST",
+          data: form.serialize(),
           success: function(data){
             console.log(data);
           }

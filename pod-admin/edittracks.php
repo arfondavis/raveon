@@ -93,7 +93,7 @@
     <div class="col-12 pt-3">
       <h5 id="tracks">Track Listings</h5>
     </div>
-    <form action="" method="post" name="editepisodetracks">
+    <form action="" method="post" id="editept" name="editepisodetracks">
       <div class="row mb-3">
         <div class="col-md-6"><h6>Artist</h6></div>
         <div class="col-md-5"><h6>Track</h6></div>
@@ -117,6 +117,7 @@
         <div class="col-md-1">
           <button class="btn btn-danger" name="deltrack" type="submit"><i class="fas fa-minus-circle"></i></button>
           <input type="hidden" value="<?php echo $row['tracks_id']?>" name="trackID">
+          <input type="hidden" value="<?php echo $row['podcast_id']?>" name="trackEID">
         </div>
       </div>
       <?php 
@@ -134,9 +135,39 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var delay = (function(){
+      var timer = 0;
+      return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+      };
+    })();
+    var form = $('#editept');
+    $("input").keyup(function() {
+      delay(function(){
+        $.ajax({
+          url: "updatetracks.php",
+          type: "POST",
+          data: {
+            id: form.trackID,
+            artist: form.artistInput,
+            track: form.trackArtist,
+            pdcast: form.trackEID
+          },
+          success: function(data){
+            console.log(data);
+          }
+        })
+      }, 1500);
+    });
+  });
+</script>
 <?php $db->close(); ?>
 </body>
 </html>

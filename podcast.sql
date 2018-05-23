@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `pod_list` (
   `date` date NOT NULL,
   `duration` time NOT NULL,
   `mixcloud_url` varchar(255) NOT NULL,
+  `live` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 

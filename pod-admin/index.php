@@ -42,45 +42,85 @@
   </nav>
 </div>
 <main role="main" class="container">
-  <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('../image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="../image/dj-raveon-txt-full200.png" alt="" width="48" height="48">
-  </div>
+  <?php include_once('shared/logo.php'); ?>
   <div class="my-3 p-3 bg-white rounded box-shadow">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>
+    <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-dark text-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>
     <?php 
+    $i = 0;
     while($row = $result->fetch_assoc()){
       $pod_num = substr($row['title'], -3);
       $pod_img_full = "http://".$_SERVER['SERVER_NAME']."/podcasts/".$pod_num."/podcast".$pod_num.".png";
-    ?>
-      <div class='media text-muted pt-3'>
-        <?php 
-          $file_headers = @get_headers($pod_img_full);
-          if($file_headers[0] == 'HTTP/1.1 404 Not Found') { ?>
-            <img src='http://placehold.it/80/068842/068842' alt="need a podcast image" title="Create and image for <?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
-          <?php }else{?>
-            <img src='<?php echo $pod_img_full; ?>' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
-          <?php }?>
-        <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title']?></strong> <?php echo $row['description'];?>
-          <small class='d-block text-left mt-3'>
-            <i class='fa fa-clock mr-1'></i><span class="text-dark"><?php echo substr($row['duration'], 0, -3);?></span>
-            <i class='fa fa-calendar ml-3 mr-1'></i><span class="text-dark"><?php echo $row['date'];?></span>
-            <?php if($row['mixcloud_url'] != '' ){?>
-            <a href="<?php echo $row['mixcloud_url'];?>" target="_blank" title="Mixcloud" class="text-dark"><i class='fab fa-mixcloud ml-3 mr-1'></i>Mixcloud</a>
-            <?php }?>
-            <a href='#' data-toggle='modal' data-target='#tracksModal' class="text-dark"><i class='fa fa-list ml-3 mr-1'></i>Track Listings</a>
-            <a href="edit.php?pe=<?php echo $row['id']?>" title="Edit Episode" class="text-dark"><i class="far fa-edit ml-3 mr-1"></i>Edit Episode</a>
-          </small>
-        </p>
-      </div>
-      <?php
-      $tracks = "SELECT tracks.*, pod.title FROM podcasts_tracks as tracks, pod_list as pod WHERE tracks.podcast_id = ".$row['id'];
-      if(!$tracks_pod_title = $db->query($tracks)){
+      //loop through all tracks for this podcast
+      $tracks = "SELECT tracks.*, pod.title FROM podcasts_tracks as tracks LEFT JOIN pod_list as pod ON tracks.podcast_id = pod.id WHERE tracks.podcast_id = ".$row['id'];
+      if(!$track_result = $db->query($tracks)){
         die('There was an erro running the query [' . $db->error . ']');
       }
-      $rowttitle = $tracks_pod_title->fetch_assoc();
-      if(!$track_result = $db->query($tracks)){
-        die('There was an error running the query [' . $db->error . ']');
-      }
+    ?>
+    <div class='media text-muted pt-3'>
+      <?php 
+      $file_headers = @get_headers($pod_img_full);
+      if($file_headers[0] == 'HTTP/1.1 404 Not Found') { ?>
+        <img src='http://placehold.it/80/068842/068842' alt="need a podcast image" title="Create and image for <?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
+      <?php }else{?>
+        <img src='<?php echo $pod_img_full; ?>' alt="podcast image" title="<?php echo $row['title'];?>" class='mr-2 rounded' width='80'>
+      <?php }
+      ?>
+      <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'><strong class='d-block text-gray-dark'><?php echo $row['title'];?></strong> <?php echo $row['description'];?>
+        <small class='d-block text-left mt-3'>
+          <i class='fa fa-clock mr-1'></i><span class="text-dark"><?php echo substr($row['duration'], 0, -3);?></span>
+          <i class='fa fa-calendar ml-3 mr-1'></i><span class="text-dark"><?php echo $row['date'];?></span>
+          <?php if($row['mixcloud_url'] != ""){?>
+          <a href="<?php echo $row['mixcloud_url'];?>" target="_blank" title="Mixcloud" class="text-dark"><i class='fab fa-mixcloud ml-3 mr-1'></i>Mixcloud</a>
+          <?php } ?>
+          <a href='#' data-toggle='modal' data-target='#tracksModal_<?php echo $i ?>' class="text-dark"><i class='fa fa-list ml-3 mr-1'></i>Track Listings</a>
+          <a href="edit.php?pe=<?php echo $row['id']?>" title="Edit Episode" class="text-dark"><i class="far fa-edit ml-3 mr-1"></i>Edit Episode</a>
+        </small>
+      </p>
+    </div>
+    <?php // Track listings ?>
+    <div class="modal fade" id="tracksModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="tracksModalTitle_<?php echo $i ?>" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tracksModalTitle_<?php echo $i ?>">Track Listing for <?php echo $rowttitle['title']?></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Track</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php 
+              $j=1;
+              while($rowt = $track_result->fetch_assoc()){
+              ?>
+                <tr>
+                  <th scope='row'><?php if($j < 10){ echo "0".$j; }else{echo $j;} ?></th>
+                  <td><?php echo $rowt['track_artist']?></td>
+                  <td><?php echo $rowt['track_title']?></td>
+                </tr>
+              <?php
+              $j++;
+              } 
+              ?>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+    $i++;
     }
     ?>
   </div>
@@ -90,47 +130,6 @@
 		<small>&copy;<?php echo date('Y'); ?></small>
 	</div>
 </footer>
-<div class="modal fade" id="tracksModal" tabindex="-1" role="dialog" aria-labelledby="tracksModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tracksModalTitle">Track Listing for <?php echo $rowttitle['title']?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Artist</th>
-              <th scope="col">Track</th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php 
-            $i=1;
-            while($rowt = $track_result->fetch_assoc()){
-              echo "
-            <tr>
-              <th scope='row'>".$i."</th>
-              <td>".$rowt['track_artist']."</td>
-              <td>".$rowt['track_title']."</td>
-            </tr>
-            ";
-            $i++;
-            }
-          ?>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

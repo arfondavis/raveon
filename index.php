@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="The place where all of DJ Raveon's podcasts can be found.">
 <meta name="author" content="Arfon Davis">
-<title>DJ Raveon's Podcast Show</title>
+<title>Raveon's Podcast Show</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!-- Custom styles for this template -->
@@ -24,7 +24,7 @@
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">DJ Raveon's Podcast Show</a>
+  <a class="navbar-brand" href="#">Raveon's Podcast Show</a>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,7 +55,7 @@
 </div>
 <main role="main" class="container">
   <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="image/ravon-logo-v2-plain-plain.svg" alt="logo" title="DJ Raveon" width="100">
+    <img class="mr-3" src="image/ravon-logo-v2-plain-plain.svg" alt="logo" title="Raveon" width="100">
   </div>
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-dark text-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>

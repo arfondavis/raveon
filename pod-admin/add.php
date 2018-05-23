@@ -56,9 +56,7 @@ if(isset($_POST["addnewep"])){
   </nav>
 </div>
 <main role="main" class="container">
-  <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('../image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="../image/dj-raveon-txt-full200.png" alt="" width="48" height="48">
-  </div>
+  <?php include_once('shared/logo.php'); ?>
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Add New Episode</h6>
     <div class="text-muted pt-3">

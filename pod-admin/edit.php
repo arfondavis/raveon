@@ -72,9 +72,7 @@
 </div>
 <?php }?>
 <main role="main" class="container">
-  <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('../image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="../image/dj-raveon-txt-full200.png" alt="" width="48" height="48">
-  </div>
+  <?php include_once('shared/logo.php'); ?>
   <?php 
     while($row = $result->fetch_assoc()){
   ?>

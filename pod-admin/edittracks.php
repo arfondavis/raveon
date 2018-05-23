@@ -102,25 +102,24 @@
         $i=1;
         while($row = $result->fetch_assoc()){
       ?>
-    <form action="" method="post" id="editept" name="editepisodetracks">
-      
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
-            <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput" placeholder="" value="<?php echo $row['track_artist'] ?>">
+      <form action="" method="post" id="editept" name="editepisodetracks">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
+              <input type="text" id="artistInput<?php echo $i?> trackArtist" class="form-control form-control-lg trackArtist" name="artistInput" placeholder="" value="<?php echo $row['track_artist'] ?>">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
+              <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput" placeholder="" value="<?php echo $row['track_title']?>">
+            </div>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-danger" name="deltrack" type="submit"><i class="fas fa-minus-circle"></i></button>
+            <input type="hidden" value="<?php echo $row['tracks_id']?>" name="trackID">
+            <input type="hidden" value="<?php echo $row['podcast_id']?>" name="trackEID">
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="form-label-group" data-row="<?php echo $row['tracks_id'] ?>">
-            <input type="text" id="trackInput<?php echo $i?> trackTitle" class="form-control form-control-lg trackTitle" name="trackInput" placeholder="" value="<?php echo $row['track_title']?>">
-          </div>
-        </div>
-        <div class="col-md-1">
-          <button class="btn btn-danger" name="deltrack" type="submit"><i class="fas fa-minus-circle"></i></button>
-          <input type="hidden" value="<?php echo $row['tracks_id']?>" name="trackID">
-          <input type="hidden" value="<?php echo $row['podcast_id']?>" name="trackEID">
-        </div>
-      </div>
       </form>
       <?php 
       $i++;
@@ -128,7 +127,6 @@
       ?>
       <div class="col-12 pt-3">
         <button class="btn btn-outline-success btn-sm float-right" name="newtrack" type="submit"><i class="fa fa-plus"></i></button>
-        <button class="btn btn-dark" name="editeptracks" type="submit">Save</button>
       </div>
   </div>
 </main>

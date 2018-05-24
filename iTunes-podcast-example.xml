@@ -1,3 +1,12 @@
+<!--
+    ############################################################################
+    ############################################################################
+    ######                                                                ######
+    ######   FOR THIS TO WORK YOU WILL NEED TO REMOVE ALL HTML COMMENTS   ######
+    ######                                                                ######
+    ############################################################################
+    ############################################################################
+-->
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/">
 <channel>
@@ -14,10 +23,13 @@
     <itunes:image href="http://www.example.com/podcastlogo.png" />
     <category>Music</category>
     <itunes:category text="Music" />
-    <language>en-uk</language>
+    <language>en</language>
     <copyright>&#xA9; 2018. All rights reserved.</copyright>
     <pubDate>Sat, 12 May 2018 01:55:00 EST</pubDate>
-    <lastBuildDate>Mon, 14 May 2018 11:40:00 GMT</lastBuildDate>
+    <!--
+        Day Format      =   Mon / Tue / Wed / Thu / Fri / Sat / Sun
+        Month Format    =   Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec
+    -->
     <generator>Owner Name</generator>
     <managingEditor>me@example.com(From Name)</managingEditor>
     <webMaster>me@example.com(From Name)</webMaster>
@@ -27,11 +39,11 @@
     </itunes:owner>
     <itunes:author>Owner Name</itunes:author>
     <itunes:explicit>clean</itunes:explicit>
-    <ttl>1</ttl>
+    <ttl>1</ttl> <!-- number of minutes the feed can stay cached before refreshing -->
     <atom:link href="http://feeds.feedburner.com/yourfeed" rel="self" type="application/rss+xml" />
 <!--REPEAT THIS BLOCK FOR EACH EPISODE-->
     <item>
-        <title>Episode&apos;s Title</title>
+        <title>Episode Title</title>
         <link>http://www.example.com/podcast.mp3</link>
         <comments>http://www.example.com/podcast.mp3</comments>
         <itunes:author>Author Name</itunes:author>
@@ -43,14 +55,24 @@
         </description>
         <content:encoded>Episode Description</content:encoded>
         <pubDate>Sat, 12 May 2018 01:55:00 GMT</pubDate>
+        <!--
+            Day Format      =   Mon / Tue / Wed / Thu / Fri / Sat / Sun
+            Month Format    =   Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec
+        -->
         <itunes:subtitle>Episode Subtitle</itunes:subtitle>
         <itunes:summary>Episode Summary</itunes:summary>
-        <itunes:keywords>keyword 1, keyword 2, keyword 3</itunes:keywords>
-        <itunes:duration>00:58:11</itunes:duration>
-        <category>Music</category>      
-        <enclosure url="http://www.example.com/podcast.mp3" length="84273568" type="audio/mpeg3" />
+        <itunes:keywords>keyword 1, keyword 2, keyword 3</itunes:keywords> <!-- keywords for this episode -->
+        <itunes:duration>00:58:11</itunes:duration> <!-- The MP3 length -->
+        <category>Music</category>
+        <!-- Standard MP3 -->
+        <enclosure url="http://www.example.com/podcast.mp3" length="84273568" type="audio/mpeg3" /> <!-- the length is file size in bytes -->
+        <!--
+        M4A file = This is adviced if you need to show your chapters within the podcast.
+        IF YOU ARE USING M4A FILE, MAKE SURE THAT THE ABOVE LINE (<enclosure>) IS DELETED AND ALL REFERENCE TO MP3 ARE CHANGED TO MA4
+        -->
+        <enclosure url="http://www.example.com/podcast.m4a" length="84273568" type="audio/x-m4a" /> <!-- the length is file size in bytes -->
         <guid>http://www.example.com/podcast.mp3</guid>
-        <itunes:explicit>clean</itunes:explicit>
+        <itunes:explicit>clean</itunes:explicit> <!-- clean, no and yes are all that will be vaild here. clean and no = episode is PG. Yes = Not PG -->
     </item>
 <!--END REPEAT--> 
 </channel>

@@ -8,6 +8,7 @@
     }
   }
   // Removes the id row from the db
+
   if(isset($_POST['deltrack'])){
     $trackid = $_POST['trackID'];
     $id = $_GET['pe'];
@@ -17,20 +18,6 @@
     } else {
       echo "Error: " . $query_del . "<br>" . mysqli_error($db);
     }
-  }
-  // Adds a new row into the db
-  if(isset($_POST['newtrack'])){
-    $id = $_GET['pe'];
-    $query_enq = "INSERT INTO podcasts_tracks (track_artist, track_title, podcast_id) VALUES ('', '', $id)"; 
-    if ($db->query($query_enq) === TRUE) {
-      header("Location:edittracks.php?pe=$id#tracks");
-    } else {
-      echo "Error: " . $query_enq . "<br>" . mysqli_error($db);
-    }
-  }
-  // Updates the current db values
-  if(isset($_POST['editeptracks'])){
-    $id = $_GET['pe'];   
   }
 ?>
 <!doctype html>
@@ -77,7 +64,7 @@
 <?php }?>
 <main role="main" class="container">
   <?php include_once('shared/logo.php'); ?>
-  <div class="my-3 p-3 bg-white rounded box-shadow">
+  <div class="my-3 p-3 bg-white rounded box-shadow" id="tracks">
     <?php if(isset($_GET['tracks']) && $_GET['tracks'] == 'del'){ ?>
       <div class="col-12">
         <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
@@ -94,7 +81,7 @@
       <div class="row mb-3">
         <div class="col-md-6"><h6>Artist</h6></div>
         <div class="col-md-5"><h6>Track</h6></div>
-        <div class="col-md-1"><button class="btn btn-outline-success btn-sm" name="newtrack" type="submit"><i class="fa fa-plus"></i></button></div>
+        <div class="col-md-1"><form action="" method="post" id="newtrack" name="newtrackfprm"><button class="btn btn-outline-success btn-sm" id="nt" name="newtrack" type="button"><i class="fa fa-plus"></i></button><input type="hidden" value="<?php echo $_GET['pe']?>" name="trackEID"></form></div>
       </div>
       <?php 
         $i=1;
@@ -159,10 +146,21 @@
               }
             );
           }
-        })
-      }, 900);
-    });
-  });
+        }) // end of ajax
+      }, 900); // end of delay
+    }); // end of $("#input").keyup
+    $("#nt").click(function() {
+      var form = $(this.form);
+      $.ajax({
+        url: "addtracks.php",
+        method: "POST",
+        data: form.serialize(),
+        success: function(data){
+          location.reload();
+        }
+      }); // end of ajax
+    }); // end of $("#input").keyup
+  }); // end of $(document).ready
 </script>
 <?php $db->close(); ?>
 </body>

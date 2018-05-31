@@ -39,6 +39,7 @@
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonvim" target="_blank">Vimeo</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonstitcher" target="_blank">Stitcher</a></li>
     </ul>
   </div>
@@ -54,6 +55,7 @@
     <a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a>
     <a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a>
     <a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a>
+    <a class="nav-link" href="http://bit.ly/raveonvim" target="_blank">Vimeo</a>
     <a class="nav-link" href="http://bit.ly/raveonstitcher" target="_blank">Stitcher</a>
   </nav>
 </div>

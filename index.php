@@ -61,7 +61,7 @@
 </div>
 <main role="main" class="container">
   <div class="d-flex align-items-center p-3 my-3 rounded" style="background: url('image/banner-bg.jpg') repeat-x;">
-    <img class="mr-3" src="image/ravon-logo-v2-plain-plain.svg" alt="logo" title="Raveon" width="100">
+    <img class="mr-3" src="image/ravon-logo-v2-plain-plain-white.svg" alt="logo" title="Raveon" width="100">
   </div>
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Podcast <span class="badge badge-pill bg-dark text-light align-text-bottom"><?php echo $result->num_rows ?></span></h6>

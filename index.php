@@ -32,7 +32,7 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto d-none d-sm-block d-md-none">
       <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a></li>
-      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonitunes" target="_blank">iTunes</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonit" target="_blank">iTunes</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Goople Play</a></li><?php /*
       <li class="nav-item"><a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a></li> */?>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a></li>
@@ -47,7 +47,7 @@
 <div class="nav-scroller bg-white box-shadow d-none d-md-block">
   <nav class="nav nav-underline">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a>
-    <a class="nav-link" href="http://bit.ly/raveonitunes" target="_blank">iTunes</a>
+    <a class="nav-link" href="http://bit.ly/raveonit" target="_blank">iTunes</a>
     <a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Google Play</a><?php /*
     <a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a> */?>
     <a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a>

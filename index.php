@@ -32,12 +32,14 @@
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto d-none d-sm-block d-md-none">
       <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a></li>
-      <li class="nav-item"><a class="nav-link" href="https://pcr.apple.com/id1384044703" target="_blank">iTunes</a></li><?php /*
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonitunes" target="_blank">iTunes</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Goople Play</a></li><?php /*
       <li class="nav-item"><a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a></li> */?>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a></li>
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonstitcher" target="_blank">Stitcher</a></li>
     </ul>
   </div>
 </nav>
@@ -45,12 +47,14 @@
 <div class="nav-scroller bg-white box-shadow d-none d-md-block">
   <nav class="nav nav-underline">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a>
-    <a class="nav-link" href="https://pcr.apple.com/id1384044703" target="_blank">iTunes</a><?php /*
+    <a class="nav-link" href="http://bit.ly/raveonitunes" target="_blank">iTunes</a>
+    <a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Google Play</a><?php /*
     <a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a> */?>
     <a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a>
     <a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a>
     <a class="nav-link" href="http://bit.ly/ravefb" target="_blank">Facebook</a>
     <a class="nav-link" href="http://bit.ly/raveonyt" target="_blank">YouTube</a>
+    <a class="nav-link" href="http://bit.ly/raveonstitcher" target="_blank">Stitcher</a>
   </nav>
 </div>
 <main role="main" class="container">

@@ -1,4 +1,5 @@
-<?php 
+<?php
+  ob_start("ob_gzhandler");
   include_once('settings/db.php');
 
   $sql = "SELECT * FROM pod_list WHERE live = 1 ORDER BY id DESC";

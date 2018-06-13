@@ -35,6 +35,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/floating-labels.css" rel="stylesheet">
+<?php include_once('settings/fav.php'); ?>
 </head>
 <body>
   <form action="" method="post" name="login" class="form-signin">

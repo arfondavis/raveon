@@ -34,6 +34,7 @@ if(isset($_POST["addnewep"])){
 <!-- Custom styles for this template -->
 <link href="../css/offcanvas.css" rel="stylesheet">
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<?php include_once('settings/fav.php'); ?>
 </head>
 <body class="bg-light">
 <?php 

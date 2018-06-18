@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /*
+Sitemap: http://raveon.designbeats.co.uk/sitmap.xml

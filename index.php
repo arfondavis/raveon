@@ -20,7 +20,10 @@
 <!-- Custom styles for this template -->
 <link href="css/offcanvas.css" rel="stylesheet">
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-<?php include_once('settings/fav.php'); ?>
+<?php 
+include_once('settings/fav.php');
+include_once('settings/analytics.php');
+?>
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
@@ -33,7 +36,7 @@
     <ul class="navbar-nav mr-auto d-none d-sm-block d-md-none">
       <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#nlModal">Newsletter</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/raveonit" target="_blank">iTunes</a></li>
-      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Goople Play</a></li><?php /*
+      <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravegoogle" target="_blank">Google Play</a></li><?php /*
       <li class="nav-item"><a class="nav-link" href="https://open.spotify.com/user/djard" target="_blank">Spotify</a></li> */?>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravemc" target="_blank">Mixcloud</a></li>
       <li class="nav-item"><a class="nav-link" href="http://bit.ly/ravesound" target="_blank">Soundcloud</a></li>
